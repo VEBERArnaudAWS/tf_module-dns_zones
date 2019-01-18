@@ -1,4 +1,6 @@
 resource "aws_route53_zone" "prd" {
+  count = "${var.bypass == "true" ? 0 : 1}"
+
   name = "${lookup(var.env_dns_zones_prefix, "prd")}${var.domain}"
 
   tags {
@@ -9,6 +11,8 @@ resource "aws_route53_zone" "prd" {
 }
 
 resource "aws_route53_zone" "stg" {
+  count = "${var.bypass == "true" ? 0 : 1}"
+
   name = "${lookup(var.env_dns_zones_prefix, "stg")}${var.domain}"
 
   tags {

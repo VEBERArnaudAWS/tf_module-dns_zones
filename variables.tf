@@ -1,3 +1,7 @@
+variable "bypass" {
+  type = "string"
+}
+
 variable "domain" {
   type = "string"
 }
