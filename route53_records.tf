@@ -1,4 +1,6 @@
 resource "aws_route53_record" "stg_ns" {
+  count = "${var.bypass == "true" ? 0 : 1}"
+
   zone_id = "${aws_route53_zone.prd.zone_id}"
 
   name = "${lookup(var.env_names, "stg")}"
