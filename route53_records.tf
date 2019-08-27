@@ -7,5 +7,5 @@ resource "aws_route53_record" "stg_ns" {
   type = "NS"
   ttl  = "30"
 
-  records = [aws_route53_zone.stg[0].name_servers]
+  records = aws_route53_zone.stg[0].name_servers
 }
