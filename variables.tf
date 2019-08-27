@@ -1,5 +1,5 @@
 variable "bypass" {
-  type = string
+  type = bool
 }
 
 variable "domain" {
