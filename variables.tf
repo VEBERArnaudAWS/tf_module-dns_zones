@@ -1,15 +1,15 @@
 variable "bypass" {
-  type = "string"
+  type = string
 }
 
 variable "domain" {
-  type = "string"
+  type = string
 }
 
 variable "env_dns_zones_prefix" {
-  type = "map"
+  type = object({ stg = string, prd = string })
 }
 
 variable "env_names" {
-  type = "map"
+  type = object({ stg = string, prd = string })
 }
