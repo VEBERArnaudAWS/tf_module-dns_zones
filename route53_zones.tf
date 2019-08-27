@@ -1,23 +1,23 @@
 resource "aws_route53_zone" "prd" {
-  count = "${var.bypass == "true" ? 0 : 1}"
+  count = var.bypass == "true" ? 0 : 1
 
-  name = "${lookup(var.env_dns_zones_prefix, "prd")}${var.domain}"
+  name = "${var.env_dns_zones_prefix[prd]}${var.domain}"
 
-  tags {
+  tags = {
     Workspace   = "prd"
-    Environment = "${lookup(var.env_names, "prd")}"
-    terraformed = "true"
+    Environment = var.env_names[prd]
+    terraformed = true
   }
 }
 
 resource "aws_route53_zone" "stg" {
-  count = "${var.bypass == "true" ? 0 : 1}"
+  count = var.bypass == "true" ? 0 : 1
 
-  name = "${lookup(var.env_dns_zones_prefix, "stg")}${var.domain}"
+  name = "${var.env_dns_zones_prefix[stg]}${var.domain}"
 
-  tags {
+  tags = {
     Workspace   = "stg"
-    Environment = "${lookup(var.env_names, "stg")}"
-    terraformed = "true"
+    Environment = var.env_names[stg]
+    terraformed = true
   }
 }
